@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Price Calculation Based On Quantity</title>
+<style>
+#calculator {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+}
+</style>
+
+<script language="javascript">
+var total_items = 4;
+
+function CalculateItemsValue() {
+	var total = 0;
+	for (i=1; i<=total_items; i++) {
+		
+		itemID = document.getElementById("qnt_"+i);
+		if (typeof itemID === 'undefined' || itemID === null) {
+			alert("No such item - " + "qnt_"+i);
+		} else {
+			total = total + parseInt(itemID.value) * parseInt(itemID.getAttribute("data-price"));
+		}
+		
+	}
+	document.getElementById("ItemsTotal").innerHTML = "$" + total;
+	
+}
+</script>
+</head>
+
+<body>
+
+<table width="400" border="1" cellpadding="5" id="calculator">
+	<tr>
+		<td bgcolor="#CCCCCC">&nbsp;</td>
+		<td width="50" bgcolor="#CCCCCC"><strong>Quantity</strong></td>
+		<td width="50" bgcolor="#CCCCCC"><strong>Price</strong></td>
+	</tr>
+	<tr>
+		<td>Item A</td>
+		<td>
+		<input name="qnt_1" type="text" id="qnt_1" value="0" size="3" data-price="100" onkeyup="CalculateItemsValue()" /></td>
+		<td>$100</td>
+	</tr>
+	<tr>
+		<td>Item B</td>
+		<td><input name="qnt_2" type="text" id="qnt_2" value="0" size="3" data-price="50" onkeyup="CalculateItemsValue()" /></td>
+		<td>$50</td>
+	</tr>
+	<tr>
+		<td>Item C</td>
+		<td><input name="qnt_3" type="text" id="qnt_3" value="0" size="3" data-price="30" onkeyup="CalculateItemsValue()" /></td>
+		<td>$30</td>
+	</tr>
+	<tr>
+		<td>Item D</td>
+		<td><input name="qnt_4" type="text" id="qnt_4" value="0" size="3" data-price="24" onkeyup="CalculateItemsValue()" /></td>
+		<td>$24</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">&nbsp;</td>
+		<td align="right" bgcolor="#CCCCCC"><strong>Total:</strong></td>
+		<td bgcolor="#CCCCCC"><strong><div id="ItemsTotal">$0</div></strong></td>
+	</tr>
+</table>
+
+
+
+</div>
+
+
+</body>
+</html>
